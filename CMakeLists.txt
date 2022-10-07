@@ -5,7 +5,9 @@ project(inipp)
 add_library(inipp INTERFACE)
 add_library(inipp::inipp ALIAS inipp)
 
-target_include_directories(inipp SYSTEM INTERFACE inipp)
+target_include_directories(inipp SYSTEM INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inipp>
+        $<INSTALL_INTERFACE:inipp>)
 
 target_compile_features(inipp INTERFACE cxx_std_11)
 
